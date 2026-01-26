@@ -1,4 +1,4 @@
-﻿namespace APPreservaLabUI
+﻿namespace Proyecto2doParcial
 {
     partial class FmrPrincipal
     {

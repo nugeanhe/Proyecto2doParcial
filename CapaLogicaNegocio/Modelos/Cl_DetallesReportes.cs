@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APPreservaLabUI.Modelo
+namespace CapaLogicaNegocio.Modelos
 {
     public class Cl_DetallesReportes
     {

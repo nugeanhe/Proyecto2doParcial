@@ -1,5 +1,5 @@
-﻿using APPreservaLabUI.LogicaNegocio;
-using APPreservaLabUI.Modelo;
+﻿using CapaLogicaNegocio.LogicaNegocio;
+using CapaLogicaNegocio.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace APPreservaLabUI.UI
+namespace CapaPresentacion.UI
 {
     public partial class FmrReportes : Form
     {

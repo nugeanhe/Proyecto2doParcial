@@ -1,4 +1,5 @@
-﻿namespace APPreservaLabUI.UI
+﻿using CapaLogicaNegocio.Modelos;
+namespace APPreservaLabUI.UI
 {
     partial class FmrReservas
     {
@@ -551,7 +552,7 @@
             // 
             // clReservaBindingSource
             // 
-            clReservaBindingSource.DataSource = typeof(Modelo.Cl_Reserva);
+            clReservaBindingSource.DataSource = typeof(Cl_Reserva);
             // 
             // label10
             // 

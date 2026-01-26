@@ -1,11 +1,11 @@
-﻿using APPreservaLabUI.Modelo;
+﻿using CapaLogicaNegocio.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APPreservaLabUI.LogicaNegocio
+namespace CapaLogicaNegocio.LogicaNegocio
 {
     public class Cl_LN_Reserva
     {

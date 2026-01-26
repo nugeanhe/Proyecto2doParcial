@@ -1,6 +1,6 @@
-﻿namespace APPreservaLabUI.UI
+﻿namespace CapaPresentacion.UI
 {
-    partial class FmrReportes
+    partial class FmrReportes : Form
     {
         /// <summary>
         /// Required designer variable.

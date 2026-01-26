@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaLogicaNegocio.Modelo
+namespace CapaLogicaNegocio.Modelos
 {
-    internal class Cl_Cuentas
+    public class Cl_Cuentas
     {
     }
 }

@@ -1,5 +1,5 @@
-﻿using APPreservaLabUI.LogicaNegocio;
-using APPreservaLabUI.Modelo;
+﻿using CapaLogicaNegocio.LogicaNegocio;
+using CapaLogicaNegocio.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

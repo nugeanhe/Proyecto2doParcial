@@ -680,7 +680,7 @@ namespace APPreservaLabUI.UI
             // 
             // dgvLaboratorioResv
             // 
-            dgvLaboratorioResv.DataPropertyName = "laboratorio_id";
+            dgvLaboratorioResv.DataPropertyName = "laboratorio";
             dgvLaboratorioResv.HeaderText = "Laboratorio";
             dgvLaboratorioResv.Name = "dgvLaboratorioResv";
             dgvLaboratorioResv.ReadOnly = true;

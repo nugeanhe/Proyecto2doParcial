@@ -15,15 +15,9 @@ namespace CapaPresentacion.UI
         private Cl_LN_Reportes ln_Reportes = new Cl_LN_Reportes();
 
         private Form currentChildForm;
-        FmrLaboratorios formularioLab;
-        FmrReportes formularioRep;
-        FmrReservas formularioRes;
         //Constructor
         public FmrPrincipal()
         {
-            formularioLab = new FmrLaboratorios(ln_laboratorio);
-            formularioRep = new FmrReportes(ln_Reportes, ln_reserva, ln_laboratorio);
-            formularioRes = new FmrReservas(ln_laboratorio, ln_reserva);
 
             InitializeComponent();
             //Barra lateral (indicador)
@@ -104,18 +98,21 @@ namespace CapaPresentacion.UI
         }
         private void btnLaboratorios_Click(object sender, EventArgs e)
         {
+            FmrLaboratorios formularioLab = new FmrLaboratorios(ln_laboratorio);
             ActivateButton(sender, RGBColors.color1);
             OpenChildForm(formularioLab);
         }
 
         private void btnReservas_Click(object sender, EventArgs e)
         {
+            FmrReservas formularioRes = new FmrReservas(ln_laboratorio, ln_reserva);
             ActivateButton(sender, RGBColors.color2);
             OpenChildForm(formularioRes);
         }
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
+            FmrReportes formularioRep = new FmrReportes(ln_Reportes, ln_reserva, ln_laboratorio);
             ActivateButton(sender, RGBColors.color3);
             OpenChildForm(formularioRep);
         }

@@ -167,7 +167,7 @@ namespace APPreservaLabUI.UI
                 int id = int.Parse(txtID.Text);
 
                 var confirm = MessageBox.Show(
-                    "¿Está seguro de eliminar este laboratorio?",
+                    "¿Está seguro de eliminar este laboratorio? (Se eliminarán tambien todas las reservas hechas en este laboratorio)",
                     "Confirmar", MessageBoxButtons.YesNo);
 
                 if (confirm == DialogResult.Yes)

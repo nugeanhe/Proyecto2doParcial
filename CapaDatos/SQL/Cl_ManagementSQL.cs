@@ -25,9 +25,10 @@ namespace CapaDatos.SQL
 
                 return result > 0;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Console.WriteLine("Error executing SQL Non-Query.");
+                Console.WriteLine(ex.Message);
                 conn.closeConnection();
                 return false;
             }
@@ -45,8 +46,10 @@ namespace CapaDatos.SQL
                 da.Fill(dt);
                 conn.closeConnection();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine("Error executing SQL Query.");
+                Console.WriteLine(ex.Message);
                 conn.closeConnection();
             }
             return dt;

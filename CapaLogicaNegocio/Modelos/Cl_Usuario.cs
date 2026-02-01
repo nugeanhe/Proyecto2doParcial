@@ -14,18 +14,22 @@ namespace CapaLogicaNegocio.Modelos
         public int CuentaId { get; set; }
         public string NombreUsuario { get; set; }
         public string Contrasena { get; set; }
+        public bool esAdmin { get; set; }
 
         public Cl_Usuario()
         {
             CuentaId = 0;
             NombreUsuario = string.Empty;
             Contrasena = string.Empty;
+            esAdmin = false;
+
         }
         public Cl_Usuario(int cuentaId, string nombreUsuario, string contrasena)
         {
             CuentaId = cuentaId;
             NombreUsuario = nombreUsuario;
             Contrasena = contrasena;
+            esAdmin = false;
         }
     }
 }

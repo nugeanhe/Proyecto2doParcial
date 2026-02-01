@@ -17,5 +17,23 @@ namespace CapaDatos.Interface
             string sql = "SELECT * FROM listar_usuarios();";
             return obj_sql.ExecuteSQLQuery(sql);
         }
+        public void InsertarUsuario(string nombreUsuario, string contrasena, bool esAdmin)
+        {
+            try
+            {
+                string sql =
+            "SELECT crear_usuario(" +
+            "'" + nombreUsuario + "', " +
+            "'" + contrasena + "', " +
+            esAdmin +
+            ");";
+                obj_sql.ExecuteSQLQuery(sql);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
     }
 }

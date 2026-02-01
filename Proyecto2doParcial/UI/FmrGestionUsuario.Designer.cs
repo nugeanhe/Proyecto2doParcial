@@ -42,11 +42,12 @@
             dgvGestionUsuarios = new DataGridView();
             Usuario = new DataGridViewTextBoxColumn();
             contraseñaUsu = new DataGridViewTextBoxColumn();
-            btnModificarUsuario = new Button();
             panelBuscarUsuario = new Panel();
             txtBuscarUsuario = new TextBox();
             label4 = new Label();
             panelConten = new Panel();
+            chkAdmin = new CheckBox();
+            label5 = new Label();
             panelCampoContraseña = new Panel();
             txtContraseña = new TextBox();
             panelCampoUsuario = new Panel();
@@ -77,7 +78,6 @@
             panelFmrGestionUsu.Controls.Add(btnEliminarUsuario);
             panelFmrGestionUsu.Controls.Add(btnRegistrarUsuario);
             panelFmrGestionUsu.Controls.Add(panelTabla);
-            panelFmrGestionUsu.Controls.Add(btnModificarUsuario);
             panelFmrGestionUsu.Controls.Add(panelBuscarUsuario);
             panelFmrGestionUsu.Controls.Add(label4);
             panelFmrGestionUsu.Controls.Add(panelConten);
@@ -100,7 +100,7 @@
             btnEliminarUsuario.FlatStyle = FlatStyle.Flat;
             btnEliminarUsuario.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEliminarUsuario.ForeColor = Color.White;
-            btnEliminarUsuario.Location = new Point(283, 504);
+            btnEliminarUsuario.Location = new Point(261, 504);
             btnEliminarUsuario.Name = "btnEliminarUsuario";
             btnEliminarUsuario.Size = new Size(114, 33);
             btnEliminarUsuario.TabIndex = 23;
@@ -116,12 +116,13 @@
             btnRegistrarUsuario.FlatStyle = FlatStyle.Flat;
             btnRegistrarUsuario.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRegistrarUsuario.ForeColor = Color.White;
-            btnRegistrarUsuario.Location = new Point(26, 504);
+            btnRegistrarUsuario.Location = new Point(27, 504);
             btnRegistrarUsuario.Name = "btnRegistrarUsuario";
             btnRegistrarUsuario.Size = new Size(114, 33);
             btnRegistrarUsuario.TabIndex = 21;
             btnRegistrarUsuario.Text = "Registrar";
             btnRegistrarUsuario.UseVisualStyleBackColor = false;
+            btnRegistrarUsuario.Click += btnRegistrarUsuario_Click;
             // 
             // panelTabla
             // 
@@ -223,22 +224,6 @@
             contraseñaUsu.Name = "contraseñaUsu";
             contraseñaUsu.ReadOnly = true;
             // 
-            // btnModificarUsuario
-            // 
-            btnModificarUsuario.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnModificarUsuario.BackColor = Color.FromArgb(0, 57, 108);
-            btnModificarUsuario.Cursor = Cursors.Hand;
-            btnModificarUsuario.FlatAppearance.BorderSize = 0;
-            btnModificarUsuario.FlatStyle = FlatStyle.Flat;
-            btnModificarUsuario.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnModificarUsuario.ForeColor = Color.White;
-            btnModificarUsuario.Location = new Point(157, 504);
-            btnModificarUsuario.Name = "btnModificarUsuario";
-            btnModificarUsuario.Size = new Size(114, 33);
-            btnModificarUsuario.TabIndex = 7;
-            btnModificarUsuario.Text = "Modificar";
-            btnModificarUsuario.UseVisualStyleBackColor = false;
-            // 
             // panelBuscarUsuario
             // 
             panelBuscarUsuario.BackColor = Color.FromArgb(242, 248, 255);
@@ -278,14 +263,37 @@
             // panelConten
             // 
             panelConten.BackColor = Color.FromArgb(242, 248, 255);
+            panelConten.Controls.Add(chkAdmin);
+            panelConten.Controls.Add(label5);
             panelConten.Controls.Add(panelCampoContraseña);
             panelConten.Controls.Add(panelCampoUsuario);
             panelConten.Controls.Add(label1);
             panelConten.Controls.Add(label2);
             panelConten.Location = new Point(26, 199);
             panelConten.Name = "panelConten";
-            panelConten.Size = new Size(371, 267);
+            panelConten.Size = new Size(371, 283);
             panelConten.TabIndex = 16;
+            // 
+            // chkAdmin
+            // 
+            chkAdmin.AutoSize = true;
+            chkAdmin.Location = new Point(273, 244);
+            chkAdmin.MaximumSize = new Size(20, 20);
+            chkAdmin.Name = "chkAdmin";
+            chkAdmin.Size = new Size(15, 14);
+            chkAdmin.TabIndex = 20;
+            chkAdmin.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.FromArgb(242, 248, 255);
+            label5.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(17, 238);
+            label5.Name = "label5";
+            label5.Size = new Size(124, 21);
+            label5.TabIndex = 19;
+            label5.Text = "Administrador:";
             // 
             // panelCampoContraseña
             // 
@@ -325,6 +333,7 @@
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(299, 20);
             txtUsuario.TabIndex = 2;
+            txtUsuario.KeyPress += txtUsuario_KeyPress;
             // 
             // label1
             // 
@@ -447,7 +456,6 @@
         private Panel panelTabla;
         private Label label11;
         private DataGridView dgvGestionUsuarios;
-        private Button btnModificarUsuario;
         private Panel panelBuscarUsuario;
         private TextBox txtBuscarUsuario;
         private Label label4;
@@ -466,5 +474,7 @@
         private Label label3;
         private DataGridViewTextBoxColumn Usuario;
         private DataGridViewTextBoxColumn contraseñaUsu;
+        private CheckBox chkAdmin;
+        private Label label5;
     }
 }

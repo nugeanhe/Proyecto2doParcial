@@ -70,6 +70,25 @@ namespace CapaPresentacion.UI
             txtContraseña.Text = string.Empty;
         }
 
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo números y la tecla Backspace
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Cancela la tecla
+                return;
+            }
 
+            // Limitar a 10 dígitos
+            if (char.IsDigit(e.KeyChar) && txtUsuario.Text.Length >= 10)
+            {
+                e.Handled = true; // Cancela la tecla
+            }
+        }
+
+        private void btnRegistrarUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

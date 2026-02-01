@@ -32,7 +32,6 @@
             panelFmrLogin = new Panel();
             txtContraseñaUsu = new TextBox();
             txtCedulaUsu = new TextBox();
-            btnRegistrarse = new Button();
             btnIniciarSesion = new Button();
             panel2 = new Panel();
             pictureBox3 = new PictureBox();
@@ -51,7 +50,6 @@
             panelFmrLogin.BackColor = Color.White;
             panelFmrLogin.Controls.Add(txtContraseñaUsu);
             panelFmrLogin.Controls.Add(txtCedulaUsu);
-            panelFmrLogin.Controls.Add(btnRegistrarse);
             panelFmrLogin.Controls.Add(btnIniciarSesion);
             panelFmrLogin.Controls.Add(panel2);
             panelFmrLogin.Controls.Add(pictureBox3);
@@ -73,9 +71,11 @@
             txtContraseñaUsu.ForeColor = Color.Gray;
             txtContraseñaUsu.Location = new Point(114, 383);
             txtContraseñaUsu.Name = "txtContraseñaUsu";
+            txtContraseñaUsu.PasswordChar = '*';
             txtContraseñaUsu.Size = new Size(282, 24);
             txtContraseñaUsu.TabIndex = 27;
             txtContraseñaUsu.Text = "Contraseña...";
+            txtContraseñaUsu.UseSystemPasswordChar = true;
             txtContraseñaUsu.Enter += txtContraseñaUsu_Enter;
             txtContraseñaUsu.Leave += txtContraseñaUsu_Leave;
             // 
@@ -94,22 +94,6 @@
             txtCedulaUsu.Enter += txtCedulaUsu_Enter;
             txtCedulaUsu.Leave += txtCedulaUsu_Leave;
             // 
-            // btnRegistrarse
-            // 
-            btnRegistrarse.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnRegistrarse.BackColor = Color.White;
-            btnRegistrarse.Cursor = Cursors.Hand;
-            btnRegistrarse.FlatAppearance.BorderSize = 0;
-            btnRegistrarse.FlatStyle = FlatStyle.Flat;
-            btnRegistrarse.Font = new Font("Century Gothic", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            btnRegistrarse.ForeColor = Color.FromArgb(0, 57, 108);
-            btnRegistrarse.Location = new Point(180, 512);
-            btnRegistrarse.Name = "btnRegistrarse";
-            btnRegistrarse.Size = new Size(103, 33);
-            btnRegistrarse.TabIndex = 25;
-            btnRegistrarse.Text = "Registrarse";
-            btnRegistrarse.UseVisualStyleBackColor = false;
-            // 
             // btnIniciarSesion
             // 
             btnIniciarSesion.AutoSizeMode = AutoSizeMode.GrowAndShrink;
@@ -125,6 +109,7 @@
             btnIniciarSesion.TabIndex = 24;
             btnIniciarSesion.Text = "Iniciar sesión";
             btnIniciarSesion.UseVisualStyleBackColor = false;
+            btnIniciarSesion.Click += btnIniciarSesion_Click;
             // 
             // panel2
             // 
@@ -213,7 +198,6 @@
         private Panel panel2;
         private PictureBox pictureBox3;
         private Button btnIniciarSesion;
-        private Button btnRegistrarse;
         private TextBox txtCedulaUsu;
         private TextBox txtContraseñaUsu;
     }

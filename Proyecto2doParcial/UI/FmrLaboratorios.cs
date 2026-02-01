@@ -249,10 +249,6 @@ namespace APPreservaLabUI.UI
                 btnGrabarLab.Enabled = true;
         }
 
-        private void chkActivo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         private void HabilitarCampos(bool estado)
         {
             txtNombreLab.Enabled = estado;

@@ -2,6 +2,7 @@ using APPreservaLabUI.UI;
 using FontAwesome.Sharp;
 using CapaLogicaNegocio.LogicaNegocio;
 using System.Runtime.InteropServices;
+using CapaLogicaNegocio.Modelos;
 namespace CapaPresentacion.UI
 {
     public partial class FmrPrincipal : Form
@@ -14,9 +15,11 @@ namespace CapaPresentacion.UI
         private Cl_LN_Reserva ln_reserva = new Cl_LN_Reserva();
         private Cl_LN_Reportes ln_Reportes = new Cl_LN_Reportes();
 
+        private Cl_Usuario usuario;
+
         private Form currentChildForm;
         //Constructor
-        public FmrPrincipal()
+        public FmrPrincipal(Cl_Usuario usuario)
         {
 
             InitializeComponent();
@@ -32,6 +35,9 @@ namespace CapaPresentacion.UI
             //Delimitar a la pantalla max del escritorio
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
+            this.usuario = usuario;
+
+            OcultarBoton();
         }
         //Estructura Colores botones
         private struct RGBColors
@@ -76,7 +82,10 @@ namespace CapaPresentacion.UI
                 currentBtn.ImageAlign = ContentAlignment.MiddleLeft;
             }
         }
-
+        private void OcultarBoton()
+        {
+            if (!usuario.EsAdmin) btnGestionUsuarios.Visible = false;
+        }
         //Abrir formulario hijo
         private void OpenChildForm(Form childForm)
         {
@@ -120,7 +129,7 @@ namespace CapaPresentacion.UI
         private void btnGestionUsuarios_Click(object sender, EventArgs e)
         {
             FmrGestionUsuario formularioUsuarios = new FmrGestionUsuario();
-            ActivateButton(sender, RGBColors.color4); 
+            ActivateButton(sender, RGBColors.color4);
             OpenChildForm(formularioUsuarios);
 
         }
@@ -172,6 +181,6 @@ namespace CapaPresentacion.UI
             WindowState = FormWindowState.Minimized;
         }
 
-        
+
     }
 }

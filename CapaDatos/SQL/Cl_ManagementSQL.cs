@@ -54,5 +54,27 @@ namespace CapaDatos.SQL
             }
             return dt;
         }
+        internal string ExecuteSQLScalar(string sql)
+        {
+            try
+            {
+                using var comando = new NpgsqlCommand();
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = sql;
+                comando.Connection = conn.openConnection();
+
+                object result = comando.ExecuteScalar();
+                conn.closeConnection();
+
+                return result != null ? result.ToString() : null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error executing SQL Scalar.");
+                Console.WriteLine(ex.Message);
+                conn.closeConnection();
+                return null;
+            }
+        }
     }
 }

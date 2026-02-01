@@ -87,6 +87,7 @@
             txtCedulaUsu.Font = new Font("Century Gothic", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtCedulaUsu.ForeColor = Color.Gray;
             txtCedulaUsu.Location = new Point(114, 302);
+            txtCedulaUsu.MaxLength = 10;
             txtCedulaUsu.Name = "txtCedulaUsu";
             txtCedulaUsu.Size = new Size(282, 24);
             txtCedulaUsu.TabIndex = 26;

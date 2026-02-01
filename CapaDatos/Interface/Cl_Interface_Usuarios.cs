@@ -35,5 +35,62 @@ namespace CapaDatos.Interface
                 throw;
             }
         }
+
+        public void ActualizarUsuario(int idUsuario, string nombreUsuario, string contrasena, bool esAdmin)
+        {
+            try
+            {
+                string sql =
+            "SELECT modificar_usuario(" +
+            idUsuario + ", " +
+            "'" + nombreUsuario + "', " +
+            "'" + contrasena + "', " +
+            esAdmin +
+            ");";
+                obj_sql.ExecuteSQLQuery(sql);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+        public bool ValidarUsuario(string nombreUsuario, string contrasena)
+        {
+            try
+            {
+                string sql =
+                    "SELECT validar_usuario(" +
+                    "'" + nombreUsuario + "', " +
+                    "'" + contrasena + "'" +
+                    ");";
+                DataTable result = obj_sql.ExecuteSQLQuery(sql);
+                if (result.Rows.Count > 0)
+                {
+                    return Convert.ToBoolean(result.Rows[0][0]);
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+        public string ObtenerContrasena(string cedula)
+        {
+            string sql = "SELECT obtener_contrasena_usuario('" + cedula + "');";
+            return obj_sql.ExecuteSQLScalar(sql); ;
+        }
+        public DataTable GetUsuarioPorCedula(string cedula)
+        {
+            string sql = "SELECT * FROM obtener_usuario_por_cedula('" + cedula + "');";
+            return obj_sql.ExecuteSQLQuery(sql);
+        }
+        public DataTable BuscarUsuarios(string criterio)
+        {
+            string sql = "SELECT * FROM buscar_usuarios_por_cedula('" + criterio + "');";
+            return obj_sql.ExecuteSQLQuery(sql);
+        }
     }
 }

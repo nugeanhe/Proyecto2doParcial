@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CapaLogicaNegocio.LogicaNegocio;
+using CapaLogicaNegocio.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,7 @@ namespace CapaPresentacion.UI
 {
     public partial class FmrLogin : Form
     {
+        Cl_LN_Usuarios ln_usuarios = new();
         public FmrLogin()
         {
             InitializeComponent();
@@ -25,6 +28,8 @@ namespace CapaPresentacion.UI
         {
 
         }
+
+
 
         //texto de sugerencia campo cédula
         private void txtCedulaUsu_Enter(object sender, EventArgs e)
@@ -66,6 +71,30 @@ namespace CapaPresentacion.UI
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
+            if (txtCedulaUsu.Text.Length == 10 && txtContraseñaUsu.Text.Length >= 8)
+            {
+                Boolean pass = ln_usuarios.ValidarContrasena(txtCedulaUsu.Text, txtContraseñaUsu.Text);
+                btnIniciarSesion.Enabled = false;
+
+                if (pass)
+                {
+                    MessageBox.Show("Inicio de sesión exitoso.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Cl_Usuario usuario = ln_usuarios.ObtenerUsuario(txtCedulaUsu.Text);
+                    this.Hide();
+                    FmrPrincipal mainForm = new(usuario);
+                    mainForm.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Cédula o contraseña incorrecta.", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    btnIniciarSesion.Enabled = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor ingrese una cédula y una contraseña válida (mínimo 8 caracteres).", "Error de inicio de sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }

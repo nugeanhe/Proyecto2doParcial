@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CapaLogicaNegocio.LogicaNegocio;
+using CapaLogicaNegocio.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,12 +15,16 @@ namespace CapaPresentacion.UI
 {
     public partial class FmrGestionUsuario : Form
     {
+        Cl_LN_Usuarios ln_usuarios = new();
+        Cl_Usuario usuario;
         public FmrGestionUsuario()
         {
             InitializeComponent();
             this.Shown += FmrGestionUsuario_Shown;
             txtBuscarUsuario.Enter += txtBuscarUsuario_Enter;
             txtBuscarUsuario.Leave += txtBuscarUsuario_Leave;
+            cargarUsuariosGrid();
+            toggleControles(false);
         }
 
         //Estética de paneles
@@ -45,6 +51,14 @@ namespace CapaPresentacion.UI
         }
 
         //Busqueda texto de sugerencia
+        private void cargarUsuariosGrid()
+        {
+            dgvGestionUsuarios.AutoGenerateColumns = false;
+            dgvGestionUsuarios.DataSource = null;
+            dgvGestionUsuarios.DataSource = ln_usuarios.GetAllUsuarios();
+            dgvGestionUsuarios.ClearSelection();
+
+        }
 
         private void txtBuscarUsuario_Enter(object sender, EventArgs e)
         {
@@ -69,7 +83,12 @@ namespace CapaPresentacion.UI
             txtUsuario.Text = string.Empty;
             txtContraseña.Text = string.Empty;
         }
-
+        private void toggleControles(bool valor)
+        {
+            txtUsuario.Enabled = valor;
+            txtContraseña.Enabled = valor;
+            chkEsAdmin.Enabled = valor;
+        }
         private bool ValidarCampos()
         {
             // Validar Usuario (cédula)
@@ -139,8 +158,76 @@ namespace CapaPresentacion.UI
             //limitar longitud de contraseña a 16 caracteres
             if (txtContraseña.Text.Length >= 16 && e.KeyChar != (char)Keys.Back)
             {
-                e.Handled = true; 
+                e.Handled = true;
             }
+
+        }
+
+        private void btnRegistrarUsuario_Click(object sender, EventArgs e)
+        {
+            toggleControles(false);
+            if (ValidarCampos())
+            {
+                usuario.NombreUsuario = txtUsuario.Text;
+                usuario.Contrasena = txtContraseña.Text;
+                usuario.EsAdmin = chkEsAdmin.Checked;
+
+                if (usuario.CuentaId >= 0)
+                {
+                    ln_usuarios.ActualizarUsuario(usuario.CuentaId, txtUsuario.Text, txtContraseña.Text, chkEsAdmin.Checked);
+                    MessageBox.Show("Usuario actualizado con éxito.");
+                    limpiar_controles();
+                    cargarUsuariosGrid();
+                    return;
+                }
+
+                ln_usuarios.InsertarUsuario(txtUsuario.Text, txtContraseña.Text, chkEsAdmin.Checked);
+                MessageBox.Show("Usuario registrado con éxito.");
+                limpiar_controles();
+                cargarUsuariosGrid();
+            }
+        }
+
+        private void dgvGestionUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+
+                    DataGridViewRow row = dgvGestionUsuarios.Rows[e.RowIndex];
+                    int id = Convert.ToInt32(row.Cells["dgvId"].Value);
+                    string cedula = row.Cells["dgvUsuario"].Value.ToString();
+                    string contraseña = row.Cells["dgvContrasena"].Value.ToString();
+                    bool esAdmin = Convert.ToBoolean(row.Cells["dgvEsAdmin"].Value);
+                    txtUsuario.Text = cedula;
+                    txtContraseña.Text = contraseña;
+                    chkEsAdmin.Checked = esAdmin;
+                    usuario = new(id, cedula, contraseña, esAdmin);
+                    toggleControles(true);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al seleccionar el usuario: " + ex.Message);
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            usuario = new();
+            limpiar_controles();
+            toggleControles(true);
+            Console.WriteLine(usuario.ToString());
+        }
+
+        private void btnBuscarUsuario_Click(object sender, EventArgs e)
+        {
+            DataTable usuariosBuscados = ln_usuarios.BuscarUsuarios(txtBuscarUsuario.Text);
+            dgvGestionUsuarios.DataSource = null;
+            dgvGestionUsuarios.DataSource = usuariosBuscados;
 
         }
     }

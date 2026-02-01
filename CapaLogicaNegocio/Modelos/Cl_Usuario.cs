@@ -14,14 +14,14 @@ namespace CapaLogicaNegocio.Modelos
         public int CuentaId { get; set; }
         public string NombreUsuario { get; set; }
         public string Contrasena { get; set; }
-        public bool esAdmin { get; set; }
+        public bool EsAdmin { get; set; }
 
         public Cl_Usuario()
         {
-            CuentaId = 0;
+            CuentaId = -1;
             NombreUsuario = string.Empty;
             Contrasena = string.Empty;
-            esAdmin = false;
+            EsAdmin = false;
 
         }
         public Cl_Usuario(int cuentaId, string nombreUsuario, string contrasena)
@@ -29,7 +29,25 @@ namespace CapaLogicaNegocio.Modelos
             CuentaId = cuentaId;
             NombreUsuario = nombreUsuario;
             Contrasena = contrasena;
-            esAdmin = false;
+            EsAdmin = false;
+        }
+        public Cl_Usuario(int cuentaId, string nombreUsuario, string contrasena, bool esAdmin)
+        {
+            CuentaId = cuentaId;
+            NombreUsuario = nombreUsuario;
+            Contrasena = contrasena;
+            EsAdmin = esAdmin;
+        }
+        public Cl_Usuario(int cuentaId, string nombreUsuario, bool esAdmin)
+        {
+            CuentaId = cuentaId;
+            NombreUsuario = nombreUsuario;
+            Contrasena = string.Empty;
+            EsAdmin = esAdmin;
+        }
+        public override string ToString()
+        {
+            return $"ID: {CuentaId}, Usuario: {NombreUsuario}, Admin: {EsAdmin}";
         }
     }
 }

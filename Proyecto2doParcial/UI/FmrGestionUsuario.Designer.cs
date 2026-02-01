@@ -305,6 +305,7 @@
             txtContraseña.Name = "txtContraseña";
             txtContraseña.Size = new Size(297, 20);
             txtContraseña.TabIndex = 4;
+            txtContraseña.KeyPress += txtContraseña_KeyPress;
             // 
             // panelCampoUsuario
             // 
@@ -325,6 +326,7 @@
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(299, 20);
             txtUsuario.TabIndex = 2;
+            txtUsuario.KeyPress += txtUsuario_KeyPress;
             // 
             // label1
             // 

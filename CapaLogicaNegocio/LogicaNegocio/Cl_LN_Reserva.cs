@@ -61,7 +61,7 @@ namespace CapaLogicaNegocio.LogicaNegocio
             foreach (DataRow reserva in dt_reservas.Rows)
             {
                 if (reserva["id"].ToString().ToLower() == nueva_reserva.Id.ToString().ToLower()) return true;
-                if (reserva["laboratorio_id"].ToString().ToLower() == nueva_reserva.LaboratorioId.ToString().ToLower() &&
+                if (reserva["laboratorio"].ToString().ToLower() == nueva_reserva.LaboratorioId.ToString().ToLower() &&
                     reserva["fecha"].ToString().ToLower() == nueva_reserva.Fecha.Date.ToString().ToLower())
                 {
                     if ((nueva_reserva.HoraInicio < TimeSpan.Parse(reserva["hora_inicio"].ToString())) && (nueva_reserva.HoraFin > TimeSpan.Parse(reserva["hora_final"].ToString())))

@@ -26,8 +26,9 @@ namespace APPreservaLabUI.UI
             ln_reserva = ln_res;
             ln_laboratorio = ln_lab;
             InitializeComponent();
-            CargarReservasGrid();
             this.Shown += FmrReservas_Shown;
+            CargarLaboratorios();
+            CargarReservasGrid();
         }
 
         //Estética de paneles
@@ -53,6 +54,7 @@ namespace APPreservaLabUI.UI
 
         private void CargarLaboratorios()
         {
+            //Console.WriteLine("Cargando laboratorios en el combo box...");
             cmbLaboratorio.Items.Clear();
             DataTable laboratorios = ln_laboratorio.ObtenerLaboratoriosActivos();
             foreach (DataRow lab in laboratorios.Rows)
@@ -85,7 +87,7 @@ namespace APPreservaLabUI.UI
         private void btnNuevoResv_Click(object sender, EventArgs e)
         {
             limpiar_controles();
-            CargarLaboratorios();
+            //CargarLaboratorios();
             is_reserva_nueva = true;
             HabilitarCampos(true);
             btnGrabarResv.Enabled = true;
@@ -157,6 +159,7 @@ namespace APPreservaLabUI.UI
 
         private void CargarReservasGrid()
         {
+            //Console.WriteLine("Cargando reservas en el grid...");
             dgvListaReservas.AutoGenerateColumns = false;
             dgvListaReservas.DataSource = null;
             dgvListaReservas.DataSource = ln_reserva.GetLista();
@@ -177,8 +180,7 @@ namespace APPreservaLabUI.UI
                     cmbDocente.SelectedItem = fila.Cells["dgvDocenteResv"].Value?.ToString() ?? "";
                     cmbAsignatura.SelectedItem = fila.Cells["dgvAsignaturaResv"].Value?.ToString() ?? "";
 
-                    Cl_Laboratorio lab = ln_laboratorio.ObtenerLaboratorioPorId(int.Parse(fila.Cells["dgvLaboratorioResv"].Value.ToString()));
-                    cmbLaboratorio.SelectedItem = ln_laboratorio.ObtenerLaboratorioPorId(int.Parse(fila.Cells["dgvLaboratorioResv"].Value.ToString())).Nombre;
+                    cmbLaboratorio.SelectedItem = fila.Cells["dgvLaboratorioResv"].Value.ToString();
 
                     DateTime fecha = DateTime.ParseExact(fila.Cells["dgvFechaResv"].Value.ToString(), "dd-MMM-yy", CultureInfo.InvariantCulture);
                     dtpFecha.Value = fecha;
@@ -216,19 +218,20 @@ namespace APPreservaLabUI.UI
 
         private void dgvListaReservas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvListaReservas.Columns[e.ColumnIndex].Name == "dgvLaboratorioResv")
-            {
-                if (e.Value != null)
-                {
-                    int labId = (int)e.Value;
-                    var laboratorio = ln_laboratorio.ObtenerLaboratorioPorId(labId);
-                    if (laboratorio != null)
-                    {
-                        e.Value = laboratorio.Nombre;
-                        e.FormattingApplied = true;
-                    }
-                }
-            }
+            //if (dgvListaReservas.Columns[e.ColumnIndex].Name == "dgvLaboratorioResv")
+            //{
+            //    if (e.Value != null)
+            //    {
+            //        int labId = (int)e.Value;
+            //        var laboratorio = ln_laboratorio.ObtenerLaboratorioPorId(labId);
+            //        Console.WriteLine("Formateando laboratorio con ID: " + labId);
+            //        if (laboratorio != null)
+            //        {
+            //            e.Value = laboratorio.Nombre;
+            //            e.FormattingApplied = true;
+            //        }
+            //    }
+            //}
             //if (dgvListaReservas.Columns[e.ColumnIndex].Name == "dvgEstado")
             //{
             //    e.Value = "finalizada";

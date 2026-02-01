@@ -70,6 +70,78 @@ namespace CapaPresentacion.UI
             txtContraseña.Text = string.Empty;
         }
 
+        private bool ValidarCampos()
+        {
+            // Validar Usuario (cédula)
+            if (string.IsNullOrWhiteSpace(txtUsuario.Text))
+            {
+                MessageBox.Show("Ingrese el número de cédula.");
+                txtUsuario.Focus();
+                return false;
+            }
 
+            if (!txtUsuario.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("La cédula solo debe contener números.");
+                txtUsuario.Focus();
+                return false;
+            }
+
+            if (txtUsuario.Text.Length != 10)
+            {
+                MessageBox.Show("La cédula debe tener exactamente 10 dígitos.");
+                txtUsuario.Focus();
+                return false;
+            }
+
+            // Validar Contraseña
+            if (string.IsNullOrWhiteSpace(txtContraseña.Text))
+            {
+                MessageBox.Show("Ingrese una contraseña.");
+                txtContraseña.Focus();
+                return false;
+            }
+
+            if (txtContraseña.Text.Length < 6)
+            {
+                MessageBox.Show("La contraseña debe tener al menos 6 caracteres.");
+                txtContraseña.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo números y la tecla Backspace
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            // Limitar a 10 dígitos
+            if (char.IsDigit(e.KeyChar) && txtUsuario.Text.Length >= 10)
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void txtContraseña_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //no permitir espacios
+            if (e.KeyChar == ' ')
+            {
+                e.Handled = true;
+            }
+            //limitar longitud de contraseña a 16 caracteres
+            if (txtContraseña.Text.Length >= 16 && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; 
+            }
+
+        }
     }
 }

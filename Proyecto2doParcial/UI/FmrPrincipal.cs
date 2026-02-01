@@ -39,7 +39,7 @@ namespace CapaPresentacion.UI
             public static Color color1 = Color.FromArgb(152, 172, 248);
             public static Color color2 = Color.FromArgb(255, 184, 224);
             public static Color color3 = Color.FromArgb(247, 141, 96);
-
+            public static Color color4 = Color.FromArgb(144, 238, 144);
         }
         //Métodos
         //Resaltar el botón activo
@@ -117,11 +117,20 @@ namespace CapaPresentacion.UI
             OpenChildForm(formularioRep);
         }
 
+        private void btnGestionUsuarios_Click(object sender, EventArgs e)
+        {
+            FmrGestionUsuario formularioUsuarios = new FmrGestionUsuario();
+            ActivateButton(sender, RGBColors.color4); 
+            OpenChildForm(formularioUsuarios);
+
+        }
         private void btnHome_Click(object sender, EventArgs e)
         {
             currentChildForm.Hide();
             Reset();
         }
+
+
 
         private void Reset()
         {
@@ -162,5 +171,7 @@ namespace CapaPresentacion.UI
         {
             WindowState = FormWindowState.Minimized;
         }
+
+        
     }
 }

@@ -45,6 +45,7 @@
             panelDesktop = new Panel();
             label1 = new Label();
             pictureBox1 = new PictureBox();
+            btnGestionUsuarios = new FontAwesome.Sharp.IconButton();
             panelMenu.SuspendLayout();
             PanelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnHome).BeginInit();
@@ -57,6 +58,7 @@
             // panelMenu
             // 
             panelMenu.BackColor = Color.FromArgb(12, 43, 78);
+            panelMenu.Controls.Add(btnGestionUsuarios);
             panelMenu.Controls.Add(btnReportes);
             panelMenu.Controls.Add(btnReservas);
             panelMenu.Controls.Add(btnLaboratorios);
@@ -294,6 +296,29 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
+            // btnGestionUsuarios
+            // 
+            btnGestionUsuarios.Dock = DockStyle.Top;
+            btnGestionUsuarios.FlatAppearance.BorderSize = 0;
+            btnGestionUsuarios.FlatStyle = FlatStyle.Flat;
+            btnGestionUsuarios.Font = new Font("Century Gothic", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnGestionUsuarios.ForeColor = Color.White;
+            btnGestionUsuarios.IconChar = FontAwesome.Sharp.IconChar.User;
+            btnGestionUsuarios.IconColor = Color.White;
+            btnGestionUsuarios.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnGestionUsuarios.IconSize = 32;
+            btnGestionUsuarios.ImageAlign = ContentAlignment.MiddleLeft;
+            btnGestionUsuarios.Location = new Point(0, 380);
+            btnGestionUsuarios.Name = "btnGestionUsuarios";
+            btnGestionUsuarios.Padding = new Padding(10, 0, 20, 0);
+            btnGestionUsuarios.Size = new Size(236, 60);
+            btnGestionUsuarios.TabIndex = 4;
+            btnGestionUsuarios.Text = "Gestión Usuarios";
+            btnGestionUsuarios.TextAlign = ContentAlignment.TopLeft;
+            btnGestionUsuarios.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnGestionUsuarios.UseVisualStyleBackColor = true;
+            btnGestionUsuarios.Click += btnGestionUsuarios_Click;
+            // 
             // FmrPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -335,5 +360,6 @@
         private FontAwesome.Sharp.IconButton btnMax;
         private FontAwesome.Sharp.IconButton btnMinus;
         private Label label1;
+        private FontAwesome.Sharp.IconButton btnGestionUsuarios;
     }
 }

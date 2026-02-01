@@ -64,6 +64,15 @@ namespace APPreservaLabUI.UI
             txtBuscarLab = new TextBox();
             panelTabla = new Panel();
             dgvListaReservas = new DataGridView();
+            dgvIdResv = new DataGridViewTextBoxColumn();
+            dgvDocenteResv = new DataGridViewTextBoxColumn();
+            dgvAsignaturaResv = new DataGridViewTextBoxColumn();
+            dgvLaboratorioResv = new DataGridViewTextBoxColumn();
+            dgvFechaResv = new DataGridViewTextBoxColumn();
+            dgvHoraInicioResv = new DataGridViewTextBoxColumn();
+            dgvHoraFinResv = new DataGridViewTextBoxColumn();
+            dgvCantidadPersonasResv = new DataGridViewTextBoxColumn();
+            dvgEstado = new DataGridViewComboBoxColumn();
             label11 = new Label();
             clReservaBindingSource = new BindingSource(components);
             label10 = new Label();
@@ -78,15 +87,6 @@ namespace APPreservaLabUI.UI
             txtId = new TextBox();
             panel2 = new Panel();
             panel4 = new Panel();
-            dgvIdResv = new DataGridViewTextBoxColumn();
-            dgvDocenteResv = new DataGridViewTextBoxColumn();
-            dgvAsignaturaResv = new DataGridViewTextBoxColumn();
-            dgvLaboratorioResv = new DataGridViewTextBoxColumn();
-            dgvFechaResv = new DataGridViewTextBoxColumn();
-            dgvHoraInicioResv = new DataGridViewTextBoxColumn();
-            dgvHoraFinResv = new DataGridViewTextBoxColumn();
-            dgvCantidadPersonasResv = new DataGridViewTextBoxColumn();
-            dvgEstado = new DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvLaboratorios).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelNueva.SuspendLayout();
@@ -473,6 +473,79 @@ namespace APPreservaLabUI.UI
             dgvListaReservas.CellContentClick += dgvListaReservas_CellContentClick;
             dgvListaReservas.CellFormatting += dgvListaReservas_CellFormatting;
             // 
+            // dgvIdResv
+            // 
+            dgvIdResv.DataPropertyName = "Id";
+            dgvIdResv.HeaderText = "id";
+            dgvIdResv.Name = "dgvIdResv";
+            dgvIdResv.Visible = false;
+            dgvIdResv.Width = 47;
+            // 
+            // dgvDocenteResv
+            // 
+            dgvDocenteResv.DataPropertyName = "Docente";
+            dgvDocenteResv.HeaderText = "Docente";
+            dgvDocenteResv.Name = "dgvDocenteResv";
+            dgvDocenteResv.ReadOnly = true;
+            dgvDocenteResv.Width = 102;
+            // 
+            // dgvAsignaturaResv
+            // 
+            dgvAsignaturaResv.DataPropertyName = "Asignatura";
+            dgvAsignaturaResv.HeaderText = "Asignatura";
+            dgvAsignaturaResv.Name = "dgvAsignaturaResv";
+            dgvAsignaturaResv.ReadOnly = true;
+            dgvAsignaturaResv.Width = 120;
+            // 
+            // dgvLaboratorioResv
+            // 
+            dgvLaboratorioResv.DataPropertyName = "laboratorio";
+            dgvLaboratorioResv.HeaderText = "Laboratorio";
+            dgvLaboratorioResv.Name = "dgvLaboratorioResv";
+            dgvLaboratorioResv.ReadOnly = true;
+            dgvLaboratorioResv.Width = 123;
+            // 
+            // dgvFechaResv
+            // 
+            dgvFechaResv.DataPropertyName = "Fecha";
+            dgvFechaResv.HeaderText = "Fecha";
+            dgvFechaResv.Name = "dgvFechaResv";
+            dgvFechaResv.ReadOnly = true;
+            dgvFechaResv.Width = 82;
+            // 
+            // dgvHoraInicioResv
+            // 
+            dgvHoraInicioResv.DataPropertyName = "hora_Inicio";
+            dgvHoraInicioResv.HeaderText = "Inicio de clase";
+            dgvHoraInicioResv.Name = "dgvHoraInicioResv";
+            dgvHoraInicioResv.ReadOnly = true;
+            dgvHoraInicioResv.Width = 143;
+            // 
+            // dgvHoraFinResv
+            // 
+            dgvHoraFinResv.DataPropertyName = "hora_Fin";
+            dgvHoraFinResv.HeaderText = "Fin de la clase";
+            dgvHoraFinResv.Name = "dgvHoraFinResv";
+            dgvHoraFinResv.ReadOnly = true;
+            dgvHoraFinResv.Width = 141;
+            // 
+            // dgvCantidadPersonasResv
+            // 
+            dgvCantidadPersonasResv.DataPropertyName = "cant_estudiantes";
+            dgvCantidadPersonasResv.HeaderText = "Cantidad Alumnos";
+            dgvCantidadPersonasResv.Name = "dgvCantidadPersonasResv";
+            dgvCantidadPersonasResv.ReadOnly = true;
+            dgvCantidadPersonasResv.Width = 181;
+            // 
+            // dvgEstado
+            // 
+            dvgEstado.DataPropertyName = "estado";
+            dvgEstado.HeaderText = "Estado";
+            dvgEstado.Items.AddRange(new object[] { "activo", "finalizada", "cancelada" });
+            dvgEstado.Name = "dvgEstado";
+            dvgEstado.Resizable = DataGridViewTriState.True;
+            dvgEstado.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
             // label11
             // 
             label11.AutoSize = true;
@@ -654,79 +727,6 @@ namespace APPreservaLabUI.UI
             panel4.Size = new Size(1900, 3);
             panel4.TabIndex = 15;
             // 
-            // dgvIdResv
-            // 
-            dgvIdResv.DataPropertyName = "Id";
-            dgvIdResv.HeaderText = "id";
-            dgvIdResv.Name = "dgvIdResv";
-            dgvIdResv.Visible = false;
-            dgvIdResv.Width = 47;
-            // 
-            // dgvDocenteResv
-            // 
-            dgvDocenteResv.DataPropertyName = "Docente";
-            dgvDocenteResv.HeaderText = "Docente";
-            dgvDocenteResv.Name = "dgvDocenteResv";
-            dgvDocenteResv.ReadOnly = true;
-            dgvDocenteResv.Width = 102;
-            // 
-            // dgvAsignaturaResv
-            // 
-            dgvAsignaturaResv.DataPropertyName = "Asignatura";
-            dgvAsignaturaResv.HeaderText = "Asignatura";
-            dgvAsignaturaResv.Name = "dgvAsignaturaResv";
-            dgvAsignaturaResv.ReadOnly = true;
-            dgvAsignaturaResv.Width = 120;
-            // 
-            // dgvLaboratorioResv
-            // 
-            dgvLaboratorioResv.DataPropertyName = "laboratorio";
-            dgvLaboratorioResv.HeaderText = "Laboratorio";
-            dgvLaboratorioResv.Name = "dgvLaboratorioResv";
-            dgvLaboratorioResv.ReadOnly = true;
-            dgvLaboratorioResv.Width = 123;
-            // 
-            // dgvFechaResv
-            // 
-            dgvFechaResv.DataPropertyName = "Fecha";
-            dgvFechaResv.HeaderText = "Fecha";
-            dgvFechaResv.Name = "dgvFechaResv";
-            dgvFechaResv.ReadOnly = true;
-            dgvFechaResv.Width = 82;
-            // 
-            // dgvHoraInicioResv
-            // 
-            dgvHoraInicioResv.DataPropertyName = "hora_Inicio";
-            dgvHoraInicioResv.HeaderText = "Inicio de clase";
-            dgvHoraInicioResv.Name = "dgvHoraInicioResv";
-            dgvHoraInicioResv.ReadOnly = true;
-            dgvHoraInicioResv.Width = 143;
-            // 
-            // dgvHoraFinResv
-            // 
-            dgvHoraFinResv.DataPropertyName = "hora_Fin";
-            dgvHoraFinResv.HeaderText = "Fin de la clase";
-            dgvHoraFinResv.Name = "dgvHoraFinResv";
-            dgvHoraFinResv.ReadOnly = true;
-            dgvHoraFinResv.Width = 141;
-            // 
-            // dgvCantidadPersonasResv
-            // 
-            dgvCantidadPersonasResv.DataPropertyName = "cant_estudiantes";
-            dgvCantidadPersonasResv.HeaderText = "Cantidad Alumnos";
-            dgvCantidadPersonasResv.Name = "dgvCantidadPersonasResv";
-            dgvCantidadPersonasResv.ReadOnly = true;
-            dgvCantidadPersonasResv.Width = 181;
-            // 
-            // dvgEstado
-            // 
-            dvgEstado.DataPropertyName = "estado";
-            dvgEstado.HeaderText = "Estado";
-            dvgEstado.Items.AddRange(new object[] { "activo", "finalizada", "cancelada" });
-            dvgEstado.Name = "dvgEstado";
-            dvgEstado.Resizable = DataGridViewTriState.True;
-            dvgEstado.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
             // FmrReservas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -735,7 +735,7 @@ namespace APPreservaLabUI.UI
             ClientSize = new Size(1098, 597);
             Controls.Add(panelFmrLab);
             Name = "FmrReservas";
-            Text = " ";
+            Text = " FmrReservas";
             ((System.ComponentModel.ISupportInitialize)dgvLaboratorios).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panelNueva.ResumeLayout(false);

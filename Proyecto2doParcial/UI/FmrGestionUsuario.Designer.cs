@@ -313,6 +313,7 @@
             txtContraseña.Name = "txtContraseña";
             txtContraseña.Size = new Size(297, 20);
             txtContraseña.TabIndex = 4;
+            txtContraseña.KeyPress += txtContraseña_KeyPress;
             // 
             // panelCampoUsuario
             // 
